@@ -17,5 +17,6 @@ public class Main {
 
         pyrat.preprocessing(laby, labyWidth, labyHeight, position, fromages);
         pyrat.turn(laby, labyWidth, labyHeight, position, fromages);
+
     }
 }
