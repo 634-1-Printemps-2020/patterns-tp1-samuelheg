@@ -6,16 +6,33 @@ public class PyRat {
 
     private List<Point> fromagesMap;
     private HashSet<Point> fromagesSet;
+    private Map<Point, List<Point>> labyMap;
+    private Map<Point,HashSet<Point>> labySet;
     /* Méthode appelée une seule fois permettant d'effectuer des traitements "lourds" afin d'augmenter la performace de la méthode turn. */
     public void preprocessing(Map<Point, List<Point>> laby, int labyWidth, int labyHeight, Point position, List<Point> fromages) {
         fromagesMap = fromages;
         fromagesSet = initializeFromagesSet();
+        labyMap = new HashMap<Point, List<Point>>();
+        labyMap = laby;
+        labySet = new HashMap<Point,HashSet<Point>>();
+        labySet = initializeLabySet();
     }
 
     private HashSet<Point> initializeFromagesSet(){
         HashSet<Point> set = new HashSet<>();
         set.addAll(fromagesMap);
         return set;
+    }
+
+    private HashMap<Point,HashSet<Point>> initializeLabySet(){
+        HashMap<Point,HashSet<Point>> map = new HashMap<Point,HashSet<Point>>();
+        Set<Point> points = labyMap.keySet();
+        for (Point point:points) {
+            HashSet<Point> pointSet = new HashSet<Point>();
+            pointSet.addAll(labyMap.get(point));
+            map.put(point,pointSet);
+        }
+        return map;
     }
 
     /* Méthode de test appelant les différentes fonctionnalités à développer.
@@ -36,33 +53,26 @@ public class PyRat {
     /* Regarde dans la liste des fromages s’il y a un fromage à la position pos.
         @return true s'il y a un fromage à la position pos, false sinon. */
     private boolean fromageIci(Point pos) {
-        if (fromagesMap.contains(pos)){
-           return true;
-        }else{
-            return false;
-        }
+        return fromagesMap.contains(pos);
     }
 
     /* Regarde de manière performante (accès en ordre constant) s’il y a un fromage à la position pos.
         @return true s'il y a un fromage à la position pos, false sinon. */
     private boolean fromageIci_EnOrdreConstant(Point pos) {
-        if (fromagesSet.contains(pos)){
-            return true;
-        }
-        return false;
+        return fromagesSet.contains(pos);
     }
 
     /* Indique si le joueur peut passer de la position (du Point) « de » au point « a ».
         @return true s'il y a un passage depuis  « de » vers « a ». */
     private boolean passagePossible(Point de, Point a) {
-        return false;
+        return labyMap.get(de).contains(a);
     }
 
     /* Indique si le joueur peut passer de la position (du Point) « de » au point « a »,
         mais sans devoir parcourir la liste des Points se trouvant dans la Map !
         @return true s'il y a un passage depuis  « de » vers « a ». */
     private boolean passagePossible_EnOrdreConstant(Point de, Point a) {
-        return false;
+        return labySet.get(de).contains(a);
     }
 
     /* Retourne la liste des points qui ne peuvent pas être atteints depuis la position « pos ».
