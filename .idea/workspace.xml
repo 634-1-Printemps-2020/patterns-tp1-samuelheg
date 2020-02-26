@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b852990a-f2d1-44a1-be40-c4708cd82283" name="Default" comment="fromagesIci opérationnel">
+    <list default="true" id="b852990a-f2d1-44a1-be40-c4708cd82283" name="Default" comment="passageIci opérationnel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/metier/PyRat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/metier/PyRat.java" afterDir="false" />
     </list>
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582709227076</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="passageIci opérationnel">
+      <created>1582711143843</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1582711143843</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -138,7 +145,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -146,7 +155,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fromagesIci opérationnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="fromagesIci opérationnel" />
+    <MESSAGE value="passageIci opérationnel" />
+    <option name="LAST_COMMIT_MESSAGE" value="passageIci opérationnel" />
   </component>
   <component name="masterDetails">
     <states>

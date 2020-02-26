@@ -35,6 +35,24 @@ public class PyRat {
         return map;
     }
 
+    private HashMap<Point,Point> routage(Point de){
+        HashMap<Point,Point> routage = new HashMap<Point,Point>();
+        routage.put(de,null);
+        HashSet<Point> marquage = new  HashSet<Point>();
+        return routageRec(de,routage,marquage);
+    }
+
+    private HashMap<Point,Point> routageRec(Point de, HashMap<Point,Point> routage, HashSet<Point> marquage){
+        marquage.add(de);
+        for (Point point: labyMap.get(de)) {
+            if(!marquage.contains(point)){
+                routage.put(point,de);
+                routageRec(point,routage,marquage);
+            }
+        }
+        return routage;
+    }
+
     /* Méthode de test appelant les différentes fonctionnalités à développer.
         @param laby - Map<Point, List<Point>> contenant tout le labyrinthe, c'est-à-dire la liste des Points, et les Points en relation (passages existants)
         @param labyWidth, labyHeight - largeur et hauteur du labyrinthe
@@ -78,6 +96,13 @@ public class PyRat {
     /* Retourne la liste des points qui ne peuvent pas être atteints depuis la position « pos ».
         @return la liste des points qui ne peuvent pas être atteints depuis la position « pos ». */
     private List<Point> pointsInatteignables(Point pos) {
-        return null;
+        HashMap<Point,Point> routage = routage(pos);
+        List<Point> inatteignables = new ArrayList<Point>();
+        for (Point point:labyMap.keySet()) {
+            if(!routage.containsKey(point)){
+                inatteignables.add(point);
+            }
+        }
+        return inatteignables;
     }
 }
